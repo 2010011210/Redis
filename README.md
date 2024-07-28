@@ -357,7 +357,7 @@ public static void RedisZSet()
 }
 ~~~
 
-#6 持久化
+# 6 持久化
 
 1. RDB    
 SNAPSHOTTING
