@@ -56,14 +56,12 @@ namespace RedisConsole
                     expiredResult2 = client.Get<int>("number");
                     Console.WriteLine(expiredResult2);
                     var resultNumber = client.Decr("number");  //减去
-                    resultNumber = client.DecrBy("number",10);  //减去10
-
+                    //resultNumber = client.DecrBy("number",10);  //减去10
                     //client.Incr("number"); // 加1
                 }
                 #endregion
 
             }
-
         }
 
         #region 秒杀
@@ -93,9 +91,6 @@ namespace RedisConsole
             using (RedisClient client = new RedisClient("127.0.0.1", 6379))
             {
                 var resultNumber = client.Decr("number");  //减去
-                resultNumber = client.Increment("number", 10);  //减去
-                resultNumber = client.Incr("number");  //减去
-                resultNumber = client.IncrBy("number",20);  //减去
                 if (resultNumber > 0)
                 {
                     Console.WriteLine($"{resultNumber};抢票成功");
@@ -153,23 +148,23 @@ namespace RedisConsole
                 var hashAddResult = client.SetEntryInHash(hashId, "name", "wangcong2");  // 命令行是这样写 hset hashId name wangcong2
                 hashAddResult = client.SetEntryInHash(hashId, "age", "23");
 
-                var name = client.GetValueFromHash(hashId, "name");                     // 等同于命令行 hset hashId name
+                var name = client.GetValueFromHash(hashId, "name");                     // 等同于命令行 hget hashId name
                 var name2 = client.GetValuesFromHash(hashId, new string[] { "name", "age"});
 
                 // 批量操作
                 Dictionary<string, string> worker = new Dictionary<string, string>();
                 worker.Add("name", "duanshan");
                 worker.Add("age", "34");
-                client.SetRangeInHash(hashId, worker);
+                client.SetRangeInHash(hashId, worker);    // 等同于命令行 HMSet hashId  name duanshan1  age 35
 
-                var dic = client.GetAllEntriesFromHash(hashId);
+                var dic = client.GetAllEntriesFromHash(hashId); // 等同于 HGetAll hashId
                 foreach (var item in dic) 
                 {
                     Console.WriteLine( $"{item.Key}:{item.Value}");
                 }
 
                 // 获取所有的key
-                var keys = client.GetHashKeys(hashId);
+                var keys = client.GetHashKeys(hashId);   // 命令行等同于 HKeys hashId
 
                 // 一个对象保存到hashTable，对象必须有id值
                 var user = new User() { Id = "001", Name = "大头", Age = "33" };  //必须要有Id值，否则会自动生成一串哈希值
@@ -179,7 +174,7 @@ namespace RedisConsole
 
                 var userData = client.GetFromHash<User>("001");
                 // 删除值
-                client.RemoveEntryFromHash(hashId, "age");
+                client.RemoveEntryFromHash(hashId, "age");   // 命令行等同于 HDel hashId age
             }
         }
 
@@ -194,30 +189,128 @@ namespace RedisConsole
             using (RedisClient client = new RedisClient("127.0.0.1", 6379))
             {
                 string hashId = "wangcongFamily";
-                client.AddItemToList("shu", "刘备");  // 
+                client.AddItemToList("shu", "刘备");  // LPUSH shu 刘备
                 client.AddItemToList("shu", "关羽");
 
                 client.PushItemToList("shu", "张飞");   // 后面追加
-                client.PrependItemToList("shu", "诸葛亮");  // 前面追加
+                client.PrependItemToList("shu", "诸葛亮");  // 前面追加 RPush shu 诸葛亮
 
                 // 批量操作
-                client.AddRangeToList("wei", new List<string>() { "曹操", "司马懿", "张辽"});
+                client.AddRangeToList("wei", new List<string>() { "曹操", "司马懿", "张辽"});  // LPUSH wei 曹操 司马懿 张辽
                 // 按下标查询
-                var peoples = client.GetRangeFromList("wei", 0,1);
+                var people = client.GetItemFromList("wei", 0);    // 等同于命令行  LIndex wei 0
+                var peoples = client.GetRangeFromList("wei", 0,1); // 等同于命令行 LRange wei 0 1
+
                 // 获取所有的
                 peoples = client.GetAllItemsFromList("wei");
 
-                var lastItem = client.RemoveEndFromList("shu"); // 移除尾部
-                var firstItem = client.RemoveStartFromList("shu"); // 移除尾部
+                var lastItem = client.RemoveEndFromList("shu"); // 移除尾部  LPOP shu
+                var firstItem = client.RemoveStartFromList("shu"); // 移除尾部 RPOP shu
 
-                client.SetItemInList("wei", 1, "司马昭之心，路人皆知");
+                client.SetItemInList("wei", 1, "司马昭之心，路人皆知"); // 等同于 LSet wei 1 changByCommondLine
 
+                client.AddItemToList("wu","孙权");
+                client.Expire("wu", 20);  //设置过期时间 Expire wu 20
             }
         }
 
         #endregion
 
-        #region Set
+        #region Set 去重，并集，差集，补集
+        /// <summary>
+        /// 哈希值
+        /// </summary>
+        public static void RedisSet()
+        {
+            using (RedisClient client = new RedisClient("127.0.0.1", 6379))
+            {
+                client.AddItemToSet("投票_赞成", "中国");  // SADD key value [value...]
+                client.AddItemToSet("投票_赞成", "中国");
+                client.AddItemToSet("投票_赞成", "俄罗斯");
+                client.AddItemToSet("投票_赞成", "法国");
+
+                long yesCount = client.GetSetCount("投票_赞成");  // SCARD 投票_反对
+                Console.WriteLine($"赞成个数：{yesCount}");
+
+                client.AddItemToSet("投票_反对", "美国");
+                client.AddItemToSet("投票_反对", "英国");
+                client.AddItemToSet("投票_反对", "美国");
+                client.AddItemToSet("投票_反对", "法国");
+
+                long noCount = client.GetSetCount("投票_反对");  // SCARD 投票_反对
+                Console.WriteLine($"反对个数：{noCount}");
+
+                var yesItems = client.GetAllItemsFromSet("投票_赞成");   // SMEMBERS key //获取所有成员
+                Console.WriteLine($"赞成的人员：{string.Join(",", yesItems)}");
+
+                // 批量添加
+                client.AddRangeToSet("投票_赞成", new List<string>() { "古巴", "曹县", "越南", "古巴"} );
+                Console.WriteLine($"赞成个数：{client.GetSetCount("投票_赞成")}");
+
+                // 移除 
+                client.RemoveItemFromSet("投票_赞成","古巴");
+
+                // 从set中随机返回元素,从set中返回并移除
+                for (int i = 0; i < 6; i++) 
+                {
+                    var popItem = client.PopItemFromSet("投票_赞成"); // SPOP key [count]
+                    Console.WriteLine($"删除：{popItem},还有{string.Join(",",client.GetAllItemsFromSet("投票_赞成"))}");
+                }
+
+                // 交集
+                client.AddRangeToSet("投票_赞成", new List<string>() { "中国", "俄罗斯", "法国", "古巴", "曹县", "越南", "古巴" });
+                client.AddRangeToSet("投票_反对", new List<string>() { "美国", "英国", "法国" });
+                var allHave = client.GetIntersectFromSets("投票_赞成", "投票_反对");  // 交集 SINTER key [key...]
+                var mergeSet = client.GetUnionFromSets("投票_赞成", "投票_反对");     // 并集
+
+                client.Expire("投票_赞成", 60);
+            }
+        }
+
+
+        #endregion
+
+        #region ZSet
+
+        public static void RedisZSet()
+        {
+            using (RedisClient client = new RedisClient("127.0.0.1", 6379))
+            {
+                string zsetKey = "GDPRank";
+                string zsetKeyAsia = "AsiaGDPRank";
+                client.RemoveRangeFromSortedSet(zsetKey, 0, 10);
+                client.AddItemToSortedSet(zsetKey, "Japan", 5);  //  先比较socre，score相同，根据set内容的字母排序
+                client.AddItemToSortedSet(zsetKey, "UK", 4);  //   ZADD GDPRank 2 Vitnan
+                client.AddItemToSortedSet(zsetKey, "France", 4);  // 
+                client.AddItemToSortedSet(zsetKey, "France4", 4);  // 
+                client.AddItemToSortedSet(zsetKey, "France1", 4);  // 
+                client.AddItemToSortedSet(zsetKey, "France3", 4);  // 
+                client.AddItemToSortedSet(zsetKey, "France2", 4);  // 
+                client.AddItemToSortedSet(zsetKey, "Germany", 4);  // 
+                client.AddItemToSortedSet(zsetKey, "China", 20);  // 
+                client.AddItemToSortedSet(zsetKey, "USA", 27);  // 
+                client.AddItemToSortedSet(zsetKey, "Indian", 3);  // 
+
+                var values = client.GetAllItemsFromSortedSet(zsetKey);
+                Console.WriteLine($"正序：{string.Join(",", values)}");
+
+                var valuesDesc = client.GetAllItemsFromSortedSetDesc(zsetKey);
+                Console.WriteLine($"倒序：{string.Join(",", valuesDesc)}");
+
+                long yesCount = client.GetSetCount("投票_赞成");
+                Console.WriteLine($"赞成个数：{yesCount}");
+
+                client.AddItemToSortedSet(zsetKeyAsia, "Japan", 5);
+                client.AddItemToSortedSet(zsetKeyAsia, "China", 20);
+                client.AddItemToSortedSet(zsetKeyAsia, "Indian", 3);  //
+                client.AddItemToSortedSet(zsetKeyAsia, "Korea", 2);  
+
+                client.StoreIntersectFromSortedSets("AisaGDPInTop10",zsetKey, zsetKeyAsia); //亚洲GDP前5排在世界前10的国家，注意，合并得到的score会相加
+
+                // 获取前5名 ZRange GDPRank 0 5
+                // 倒序前5名 ZRevRange GDPRank 0 5
+            }
+        }
 
         #endregion
 

@@ -7,9 +7,11 @@ namespace RedisConsole
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
-            RedisUtility.RedisList(); 
+            //RedisUtility.RedisList();
             //RedisUtility.Show(); 
             //RedisUtility.SecondKill();
+            //RedisUtility.RedisSet(); //
+            RedisUtility.RedisZSet(); 
             #region string
 
             #endregion
