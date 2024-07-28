@@ -360,16 +360,22 @@ public static void RedisZSet()
 #6 持久化
 
 1. RDB    
+SNAPSHOTTING
 快照，每隔一段时间，把数据持久化到本地。 每隔60秒把数据备份到本地，最少有10000次修改，或者5分钟内有10次修改，就备份到本地；或者15分钟内有1次修改，就备份到本地
 ~~~
 save 900 1
 save 300 10
 save 60 10000  
 ~~~
-
+数据恢复快，但是会丢数据。因为备份有间隔
 
 2. AOF  
 相当于把每次执行的命令，保存到本地。数据如果丢了，执行语句就会恢复到内存中 
-需要修改配置文件，appendonly改为yes。 appendfsync 改为always， 如果设置为everysec，是每秒同步一次，假如出故障，最长会丢1秒的数据
+需要修改配置文件，appendonly改为yes。 appendfsync 改为always， 如果设置为everysec，是每秒同步一次，假如出故障，最长会丢1秒的数据  
+优点： 不会丢数据
+缺点：文件体积大，数据恢复慢
+
+3. 混合模式  
+aof-use-rdb-preamble 是 Redis 配置文件中与 AOF（Append Only File）持久化相关的一个配置项，它用于控制 AOF 重写时是否使用 RDB 格式的数据作为前缀。这个配置项在 Redis 4.0 及以上版本中被引入，旨在结合 RDB 和 AOF 持久化的优点，提高数据恢复的速度和数据的完整性。
 
 
