@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "7C3A/0Df90g=",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\RedisConsole.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wangcong\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\wangcong\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\wangcong\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\wangcong\\.nuget\\packages\\servicestack.common\\8.3.0\\servicestack.common.8.3.0.nupkg.sha512",
+    "C:\\Users\\wangcong\\.nuget\\packages\\servicestack.interfaces\\8.3.0\\servicestack.interfaces.8.3.0.nupkg.sha512",
+    "C:\\Users\\wangcong\\.nuget\\packages\\servicestack.redis\\8.3.0\\servicestack.redis.8.3.0.nupkg.sha512",
+    "C:\\Users\\wangcong\\.nuget\\packages\\servicestack.text\\8.3.0\\servicestack.text.8.3.0.nupkg.sha512",
+    "C:\\Users\\wangcong\\.nuget\\packages\\stackexchange.redis\\2.8.0\\stackexchange.redis.2.8.0.nupkg.sha512",
+    "C:\\Users\\wangcong\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.0\\system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
+    "C:\\Users\\wangcong\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
+    "C:\\Users\\wangcong\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512"
+  ],
+  "logs": []
+}
