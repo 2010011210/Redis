@@ -352,6 +352,7 @@ public static void RedisZSet()
 
         // 获取前5名 ZRange GDPRank 0 5
         // 倒序前5名 ZRevRange GDPRank 0 5
+        //下面的方法可以作为限流计算
         // ZScore GDPRank   China   获取China的socre   返回20
         // ZINCRBY GDPRank 10  China  China的socre增加10   返回30
     }
