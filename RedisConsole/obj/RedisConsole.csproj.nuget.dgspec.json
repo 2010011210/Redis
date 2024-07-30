@@ -46,6 +46,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "RedLock.net": {
+              "target": "Package",
+              "version": "[2.3.2, )"
+            },
             "ServiceStack.Redis": {
               "target": "Package",
               "version": "[8.3.0, )"

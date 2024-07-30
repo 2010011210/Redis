@@ -352,7 +352,8 @@ public static void RedisZSet()
 
         // 获取前5名 ZRange GDPRank 0 5
         // 倒序前5名 ZRevRange GDPRank 0 5
-        // ZINCRBY GDPRank 10 China  增加score
+        // ZScore GDPRank   China   获取China的socre 
+        // ZINCRBY GDPRank 10  China   China的socre 增加10
     }
 }
 ~~~

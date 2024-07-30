@@ -134,6 +134,17 @@ namespace RedisConsole
             }
         }
 
+        public static void WorkWithLock(string key)
+        {
+            using (RedisClient client = new RedisClient("127.0.0.1", 6379))
+            {
+                using (var dataLock = client.AcquireLock("LockKey:" + key, TimeSpan.FromSeconds(30))) 
+                {
+                
+                }
+            }
+        }
+
         #endregion
 
         #region 哈希类型
@@ -306,6 +317,9 @@ namespace RedisConsole
                 client.AddItemToSortedSet(zsetKeyAsia, "Korea", 2);  
 
                 client.StoreIntersectFromSortedSets("AisaGDPInTop10",zsetKey, zsetKeyAsia); //亚洲GDP前5排在世界前10的国家，注意，合并得到的score会相加
+
+                // ZScore GDPRank   China   获取China的socre 
+                // ZINCRBY GDPRank 10  China   China的socre 增加10
 
                 // 获取前5名 ZRange GDPRank 0 5
                 // 倒序前5名 ZRevRange GDPRank 0 5

@@ -7,8 +7,20 @@
       "RelativeMoniker": "D:0:0:{82E63FC1-E7FB-46D8-9995-932C06434290}|RedisConsole.csproj|solutionrelative:redisutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{82E63FC1-E7FB-46D8-9995-932C06434290}|RedisConsole.csproj|d:\\github\\redis\\redis\\redisconsole\\seckill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E63FC1-E7FB-46D8-9995-932C06434290}|RedisConsole.csproj|solutionrelative:seckill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{82E63FC1-E7FB-46D8-9995-932C06434290}|RedisConsole.csproj|d:\\github\\redis\\redis\\redisconsole\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{82E63FC1-E7FB-46D8-9995-932C06434290}|RedisConsole.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E63FC1-E7FB-46D8-9995-932C06434290}|RedisConsole.csproj|d:\\github\\redis\\redis\\redisconsole\\model\\redlockutitily.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82E63FC1-E7FB-46D8-9995-932C06434290}|RedisConsole.csproj|solutionrelative:model\\redlockutitily.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82E63FC1-E7FB-46D8-9995-932C06434290}|RedisConsole.csproj|d:\\github\\redis\\redis\\redisconsole\\redisconsole.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{82E63FC1-E7FB-46D8-9995-932C06434290}|RedisConsole.csproj|solutionrelative:redisconsole.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{82E63FC1-E7FB-46D8-9995-932C06434290}|RedisConsole.csproj|d:\\github\\redis\\redis\\redisconsole\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,8 +34,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 875,
-          "SelectedChildIndex": 14,
+          "SelectedChildIndex": 17,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RedLockUtitily.cs",
+              "DocumentMoniker": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\Model\\RedLockUtitily.cs",
+              "RelativeDocumentMoniker": "Model\\RedLockUtitily.cs",
+              "ToolTip": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\Model\\RedLockUtitily.cs",
+              "RelativeToolTip": "Model\\RedLockUtitily.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwkAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-28T08:53:14.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RedisConsole",
+              "DocumentMoniker": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\RedisConsole.csproj",
+              "RelativeDocumentMoniker": "RedisConsole.csproj",
+              "ToolTip": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\RedisConsole.csproj",
+              "RelativeToolTip": "RedisConsole.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-28T08:50:45.038Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:30:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
@@ -78,7 +116,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "SecKill.cs",
+              "DocumentMoniker": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\SecKill.cs",
+              "RelativeDocumentMoniker": "SecKill.cs",
+              "ToolTip": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\SecKill.cs",
+              "RelativeToolTip": "SecKill.cs",
+              "ViewState": "AQIAAFQAAAAAAAAAAAApwGYAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-28T08:51:10.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\Model\\User.cs",
               "RelativeDocumentMoniker": "Model\\User.cs",
@@ -86,7 +137,8 @@
               "RelativeToolTip": "Model\\User.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAswAoAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T08:32:05.74Z"
+              "WhenOpened": "2024-07-27T08:32:05.74Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -96,22 +148,23 @@
               "RelativeDocumentMoniker": "RedisUtility.cs",
               "ToolTip": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\RedisUtility.cs",
               "RelativeToolTip": "RedisUtility.cs",
-              "ViewState": "AQIAAJgAAAAAAAAAAAAowB4BAAAkAAAA",
+              "ViewState": "AQIAABcBAAAAAAAAAAAAAEABAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-27T04:04:59.549Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\GitHub\\Redis\\Redis\\RedisConsole\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvw0AAAAMAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T03:42:52.299Z"
+              "WhenOpened": "2024-07-27T03:42:52.299Z",
+              "EditorCaption": ""
             }
           ]
         },
